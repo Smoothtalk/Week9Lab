@@ -29,13 +29,13 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         UserService us = new UserService();
         try {
             if(users != null) {
                 users = null;
             }
-            users = (ArrayList<User>) us.getAll();
+            users = us.getAll();
             request.setAttribute("users", users);
             
         } catch (Exception ex) {
