@@ -22,12 +22,12 @@ public class UserService {
         return users;
     }
       
-    public void insert(String email, boolean active, String firstName, String lastName, String password, int role) throws Exception {
+    public void insert(String email, boolean active, String firstName, String lastName, String password, int roleId) throws Exception {
         UserDB userDB = new UserDB();
         RoleDB roleDB = new RoleDB();
         
         User user = new User(email, active, firstName, lastName, password);
-        user.setRole(roleDB.get(role));
+        user.setRole(roleDB.get(roleId));
                 
         userDB.insert(user);
     }
@@ -42,6 +42,8 @@ public class UserService {
         user.setLastName(lastName);
         user.setPassword(password);
         user.setRole(roleDB.get(role));
+        
+        userDB.update(user);
     }
     
     public void delete(String email) throws Exception {
