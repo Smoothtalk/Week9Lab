@@ -12,9 +12,9 @@ import javax.persistence.*;
  * @author 775653
  */
 public class DBUtil {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsersPU");
+    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("UsersPU");
 
     public static EntityManagerFactory getEmFactory() {
-        return emf;
+        return EMF;
     }
 }
