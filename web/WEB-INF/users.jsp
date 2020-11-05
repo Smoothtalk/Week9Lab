@@ -41,7 +41,7 @@
         <div class="col-30"> 
             <h1>Edit Users</h1>
         <form method="post" action="user">
-            Email: <input type="text" name="editEmail" value="${editEmail}"/><br>
+            Email: <input type="text" name="editEmail" disabled="true" value="${editEmail}"/><br>
             First Name: <input type="text" name="editFName" value="${editFName}"/><br>
             Last Name: <input type="text" name="editLName" value="${editLName}"/><br>
             Password: <input type="password" name="editPassword" value="${editPassword}"/><br>
