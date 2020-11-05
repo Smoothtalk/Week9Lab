@@ -25,10 +25,10 @@ public class RoleDB {
         }
     }
     
-    public Role get(int roleNum) throws Exception {
+    public Role get(int roleId) throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
-            Role role = em.createNamedQuery("Role.findByRoleId", Role.class).getResultList().get(0);
+            Role role = em.createNamedQuery("Role.findByRoleId", Role.class).setParameter("roleId", roleId).getResultList().get(0);
             return role;
         } finally {
            em.close();
