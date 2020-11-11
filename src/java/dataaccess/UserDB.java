@@ -8,6 +8,7 @@ package dataaccess;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import models.Role;
 import models.User;
 
 /**
@@ -31,7 +32,9 @@ public class UserDB {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
+            user.getRole().getUserList().add(user);
             em.persist(user);
+            em.merge(user);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -58,8 +61,11 @@ public class UserDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try {
+            Role role = user.getRole();
+            role.getUserList().remove(user);
             trans.begin();
             em.remove(em.merge(user));
+            em.merge(user);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
